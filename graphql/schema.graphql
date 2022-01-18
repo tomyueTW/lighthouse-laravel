@@ -11,6 +11,20 @@ type Query {
     post(id: Int! @eq): Post @find
 }
 
+type Mutation {
+    createPost(input: CreatePostInput! @spread): Post @create
+}
+
+input CreatePostInput {
+    title: String!
+    content: String!
+    author: CreateUserBelongsTo
+}
+
+input CreateUserBelongsTo {
+    connect: ID
+}
+
 type User {
     id: ID!
     name: String!

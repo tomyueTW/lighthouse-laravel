@@ -65,3 +65,43 @@
     }
 }
 ```
+
+[post create posts](http://localhost:8000/graphql)
+
+```graphql
+mutation {
+    createPost(input: {
+        title: "My new Post3",
+        content: "my content3",
+        author: {
+            connect: 1
+        }
+    }) {
+        id
+        title
+        content
+        author {
+            id
+            name
+            email
+        }
+    }
+}
+```
+### Response
+```json
+{
+    "data": {
+        "createPost": {
+            "id": "53",
+            "title": "My new Post3",
+            "content": "my content3",
+            "author": {
+                "id": "1",
+                "name": "Isac Wyman",
+                "email": "kuvalis.leatha@example.net"
+            }
+        }
+    }
+}
+```
